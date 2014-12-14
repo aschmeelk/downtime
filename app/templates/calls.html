@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+<div class="content">
+	{% block content %}
+	<h2 class="heading">Add Call</h2>
+	<p>
+	{% for message in get_flashed_messages() %}
+		<div class=flash>
+			<span style="color: red;">[{{ message }}]</span>
+		</div>
+	{% endfor %}
+	</p>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+			<form action="" method="post" name="call">
+				{{form.hidden_tag()}}
+				<p>
+					<p><h4>Please enter downtime data below:</h4></p>
+					Date Down(yyyy-mm-dd):</br>
+
+					<div class="input-group date">
+						<input data-provide="datepicker" data-date-format="yyyy-mm-dd" id="date" type="text" 
+						value="{{ form.date_dn.data }}" name="date_dn">
+						
+					</div>
+					
+					{% for error in form.errors.date_dn %}
+		        		<span style="color: red;">[{{error}}]</span>
+		        	{% endfor %}<br>
+					
+					Franchise:</br>
+					{{form.franchise()}}</br>
+					{% for error in form.errors.franchise %}
+		        		<span style="color: red;">[{{error}}]</span>
+		        	{% endfor %}<br>
+
+					Location:</br>
+					{{form.location()}}</br>
+					{% for error in form.errors.location %}
+		        		<span style="color: red;">[{{error}}]</span>
+		        	{% endfor %}<br>
+					
+		        </p>
+			</div>
+			<div class="col-md-3">
+					</br>
+				<p>
+					</br>
+					Machine:</br>
+					{{form.machine()}}</br>
+					{% for error in form.errors.machine %}
+		        		<span style="color: red;">[{{error}}]</span>
+		        	{% endfor %}<br>
+
+		        	Status:</br>
+					{{form.status()}}</br>
+					{% for error in form.errors.status %}
+		        		<span style="color: red;">[{{error}}]</span>
+		        	{% endfor %}<br>
+
+		        	Date Up(yyyy-mm-dd):</br>
+
+					<div class="input-group date">
+						<input data-provide="datepicker" data-date-format="yyyy-mm-dd" id="date" type="text" 
+						value="{{ form.date_up.data }}" name="date_up">
+						
+					</div>
+					
+					{% for error in form.errors.date_up %}
+		        		<span style="color: red;">[{{error}}]</span>
+		        	{% endfor %}<br>
+
+					Technician:</br>
+					{{form.tech()}}</br>
+					{% for error in form.errors.tech %}
+		        		<span style="color: red;">[{{error}}]</span>
+		        	{% endfor %}<br>
+					
+					
+				</p>
+				<p><input type="submit" value="Add Call"></p>
+				</form>
+			</div>
+			<div class="col-md-3">
+				<span class="spanner">
+					<table class="table">
+						<tr>
+							
+							<td>
+
+								
+									<a href="/">
+										<h4>
+											<em>Home</em>
+										</h4>
+									</a>
+								
+							</td>
+						</tr>
+					</table>
+				</span>
+			</div>
+			</div><!--row -->
+		</div>
+		
+		<script type="text/javascript">
+		$('date').datepicker({
+			format: "yyyy-mm-dd"
+		});
+		</script>
+
+		
+	{% endblock %}
+</div>
